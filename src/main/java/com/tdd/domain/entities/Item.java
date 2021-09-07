@@ -18,7 +18,7 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "ORDER")
+@Table(name = "ITEM")
 @Data
 @NaturalIdCache
 @Cache(
@@ -30,15 +30,15 @@ import java.math.BigDecimal;
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Long id;
 
-    @Column(name = "VALUE")
+    @Column(name = "VAL")
     private BigDecimal value;
 
     @NaturalId
     @Column(name = "NAME")
-    private BigDecimal name;
+    private String name;
 
 
 }

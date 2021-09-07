@@ -1,14 +1,10 @@
 package com.tdd.domain.entities;
 
-import com.tdd.domain.entities.keys.OrderKey;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.NaturalId;
-import org.hibernate.annotations.NaturalIdCache;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
