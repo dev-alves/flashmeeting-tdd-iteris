@@ -1,6 +1,7 @@
 package com.tdd.services;
 
 import com.tdd.domain.entities.Item;
+import com.tdd.domain.entities.Order;
 import com.tdd.domain.exceptions.ItemNotFoundException;
 import com.tdd.repositories.ItemRepository;
 import lombok.RequiredArgsConstructor;
