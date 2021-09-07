@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class AgeUtils {
 
-    private final Integer LEGAL_AGE = 18;
+    private final Integer LEGAL_AGE = 16;
 
     public Integer getAgeByBirthDate(LocalDate birthDate){
         LocalDate now = LocalDate.now();

@@ -3,10 +3,14 @@ package com.tdd.controllers;
 import com.tdd.domain.dto.ItemDto;
 import com.tdd.domain.dto.OrderDto;
 import com.tdd.domain.dto.OrderResponse;
+import com.tdd.domain.entities.Item;
 import com.tdd.domain.entities.Order;
+import com.tdd.domain.entities.Person;
 import com.tdd.domain.mappers.ItemMapper;
 import com.tdd.domain.mappers.OrderMapper;
+import com.tdd.services.ItemService;
 import com.tdd.services.OrderService;
+import com.tdd.services.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,12 +27,17 @@ import java.util.stream.Collectors;
 @RequestMapping("order/")
 @RequiredArgsConstructor
 public class OrderController {
+
+    private final PersonService personService;
+    private final ItemService itemService;
     private final OrderService service;
     private final OrderMapper mapper;
 
     @PostMapping("submmit")
     public ResponseEntity<OrderDto> save(@RequestBody OrderDto orderDto){
-        Order order = service.save(orderDto);
+        Person person = personService.findById(orderDto.getPersonId());
+        Item item = itemService.findById(orderDto.getItemId());
+        Order order = service.save(item, person);
         return ResponseEntity.ok(mapper.toDto(order));
     }
     @GetMapping("list/{personId}")

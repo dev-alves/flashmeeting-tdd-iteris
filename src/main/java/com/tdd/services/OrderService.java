@@ -26,9 +26,7 @@ public class OrderService {
         return  orderRepository.findById(id).orElseThrow(OrderNotFoundException::new);
     }
 
-    public Order save(OrderDto orderDto){
-        Person person = personService.findById(orderDto.getPersonId());
-        Item item = itemService.findById(orderDto.getItemId());
+    public Order save(Item item, Person person){
        return orderRepository.save(mountOrder(item, person));
     }
 
@@ -40,7 +38,7 @@ public class OrderService {
                 .build();
     }
 
-    private BigDecimal getDiscount(BigDecimal value, Integer age) {
+    public BigDecimal getDiscount(BigDecimal value, Integer age) {
         AgeUtils ageUtils = new AgeUtils();
         var total = value;
         if (ageUtils.isOfLegalAge(age)) {
