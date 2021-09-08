@@ -34,11 +34,11 @@ public class OrderController {
     private final OrderMapper mapper;
 
     @PostMapping("submmit")
-    public ResponseEntity<OrderDto> save(@RequestBody OrderDto orderDto){
+    public ResponseEntity<OrderResponse> save(@RequestBody OrderDto orderDto){
         Person person = personService.findById(orderDto.getPersonId());
         Item item = itemService.findById(orderDto.getItemId());
         Order order = service.save(item, person);
-        return ResponseEntity.ok(mapper.toDto(order));
+        return ResponseEntity.ok(mapper.toResponse(order));
     }
     @GetMapping("list/{personId}")
     public ResponseEntity<List<OrderResponse>> list(@PathVariable(value = "personId") Long personId){
