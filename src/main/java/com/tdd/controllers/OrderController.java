@@ -27,9 +27,9 @@ public class OrderController {
     private final OrderMapper mapper;
 
     @PostMapping("submmit")
-    public ResponseEntity<OrderDto> save(@RequestBody OrderDto orderDto){
+    public ResponseEntity<OrderResponse> save(@RequestBody OrderDto orderDto){
         Order order = service.save(orderDto);
-        return ResponseEntity.ok(mapper.toDto(order));
+        return ResponseEntity.ok(mapper.toResponse(order));
     }
     @GetMapping("list/{personId}")
     public ResponseEntity<List<OrderResponse>> list(@PathVariable(value = "personId") Long personId){
